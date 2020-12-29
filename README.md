@@ -49,3 +49,36 @@ InstaStore is a microservice in charge of selecting the closest "convenience" st
 2. Which trade offs would you make to accomplish this on time? What'd you do next time to deliver more and sacrifice less?
 3. Do you think your service is secure? why?
 4. What would you do to measure the behaviour of your product on a production environment?
+
+## Questions & Answers
+
+1. I must use SQL or No-SQL DB or may I choose? A: You can choose. Don't forget to write your reasons behind the decision.
+2. Endpoints are fast (less than 300ms). in average or always? Do I need to validate this requirement with some tests? A: On average, a simple test in your machine would be enough.
+3. Do I need to create mock up data or there is an example dataset? if i create the data i must create data with errors too? A: I am attaching a csv with mock data.
+4. The API must be secure? A: Would be great if you secure the API
+5. What is closest? Closest in distance or maybe the first store that can  successfully complete the delivery. A: Closest in terms of distance.
+6. What is nextDeliveryTime? A: In this case, we are going to consider that each store can deliver 3 orders per hour, and according to that, you need to provide the next time (date+hour) in which the store can deliver an order (nextDeliveryTime)
+7. A Store is available if it is open? A: Yes, available = open
+8. The clients send their location (coordinates)? and if so do i need to check the coordinates validity? What other info do the requests have? A: You should expect to receive a json object with the following parameters
+“destination": {
+"name": "string”, // Name of the address given by user (required)
+"address": "string”, // Address captured (required)
+ "address_two": "string”, //Additional details for the address (line apt, house number, etc)
+"description": "string”, //Instructions for the delivery
+"country": "string”, // Country code according to ISO-3166-1 (required)
+ "city": "string", // City name
+"state": "string", // State name
+"zip_code": "string",
+"latitude": 0, //number indicating the latitude of the address provided
+"longitude": 0, //number indicating the longitude of the address provided
+}
+8. to keep track of each call do i need to save this info in an external service? A: There is no need to use a external service, please keep it simple.
+9. is there any format for the response (e.g. Json)? A: This has to be one of your implementations decisions
+
+## Design
+
+![Design](design.png)
+
+## Expected delivery
+
+I expect to complete the challenge the 30th of Decemeber of 2020.
