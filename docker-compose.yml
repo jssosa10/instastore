@@ -1,0 +1,17 @@
+version: '1'
+
+services:
+  backend:
+    env_file:
+      - production.env
+    volumes:
+      - ./back/:/back # maps host diretory to internal container directory
+    working_dir: /back/
+    build: ./back
+    command: sh run.sh
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo:latest
+    ports:
+      - 27017:27017
