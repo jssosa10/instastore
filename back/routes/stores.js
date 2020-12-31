@@ -2,9 +2,9 @@ const express = require('express');
 const track = require('../services/tracking');
 const authenticate = require('../middleware/auth');
 const findClosest = require('../controllers/stores');
-const indexRouter = express.Router();
+const storesRouter = express.Router();
 
-indexRouter.get('/', authenticate, async (req, res) =>{
+storesRouter.get('/', authenticate, async (req, res) =>{
   const store = await findClosest(req.body);
   if(store){
     track(req, 200, store);
@@ -17,4 +17,4 @@ indexRouter.get('/', authenticate, async (req, res) =>{
   }
 });
 
-module.exports = indexRouter;
+module.exports = storesRouter;
