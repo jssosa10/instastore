@@ -44,11 +44,7 @@ InstaStore is a microservice in charge of selecting the closest "convenience" st
 3. It should manage errors and unexpected requests. Users should always know what to do.
 4. App should include a top bar with a logo (go nuts)
 5. The app should be served through a CDN
-## Improvements and trade offs
-1. What would you improve from your code? why?
-2. Which trade offs would you make to accomplish this on time? What'd you do next time to deliver more and sacrifice less?
-3. Do you think your service is secure? why?
-4. What would you do to measure the behaviour of your product on a production environment?
+
 
 ## Questions & Answers
 
@@ -79,6 +75,28 @@ InstaStore is a microservice in charge of selecting the closest "convenience" st
 
 ![Design](design.png)
 
+The solution use a MongoDB to save the info of the stores and the tracking, we decide to use a MongoDB because in nodejs is easliy to connect this kind of databases, also in the tracking service we need to write more info and read exporadically.
+
 ## Expected delivery
 
 I expect to complete the challenge the 30th of Decemeber of 2020.
+
+## Endpoint documentation
+
+the documentation of the endpoint is available on  [documentation](https://documenter.getpostman.com/view/1071586/TVt19k5d)
+
+example token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.bwIlfhzHf9wj6lSMMvKiWg2fIpdz1sb9OnoB-s6xwQQ
+
+## Blockers
+
+I dont understand correctly how to handle the nextDeliveryTime of the store. 
+
+## Improvements and trade offs
+1. What would you improve from your code? why?
+I would add unit testing and also would like to check some corner cases the i did not take into account.   
+2. Which trade offs would you make to accomplish this on time? What'd you do next time to deliver more and sacrifice less?
+In this test I sacrifice the use the info of the deliveries of the stores, Next time i like to implement the solution with some framework like TDD in order to secure satisfaction of the requirements. 
+3. Do you think your service is secure? why?
+From the client side is secure in terms that no unauthorized user can acces the API, however currently we are saving the token as plain text in the tracking service and that may lead to insecure behaviour.
+4. What would you do to measure the behaviour of your product on a production environment?
+I would add a time for request in the tacking service and with taht info i can evaluate the service in time.
