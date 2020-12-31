@@ -5,10 +5,14 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose')
+const updateDB = require('./utils/updateDB');
 
 const mongoDB = 'mongodb://mongo:27017/instastore';
 mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true})
- .then(() => console.log("Connected to database"))
+ .then(() => {
+     console.log("Connected to database");
+     updateDB();
+    })
  .catch((err) => console.log(err));
 
 const indexRouter = require('./routes/index');
